@@ -1,10 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PracticeDotNetCore.Services;
 
 namespace PracticeDotNetCore.Controllers
 {
     [Route("api/[controller]")]
     public class TestController : Controller
     {
+        private ITestService _testService;
+
+        public TestController(ITestService testService) {
+            _testService = testService;
+        }
+
         [HttpGet("Threads")]
         public IActionResult PrintNumbersInThreads() 
         {
@@ -33,6 +40,13 @@ namespace PracticeDotNetCore.Controllers
             Console.WriteLine(result);
 
             return Content("Async operation complete.");
+        }
+
+        [HttpGet("DITest")]
+        public IActionResult GetDIServices() 
+        {
+            _testService.TestDIService();
+            return Content("Dependency Injection test completed.");
         }
 
         private void PrintNumbers()
