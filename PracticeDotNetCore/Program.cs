@@ -1,5 +1,8 @@
+using PracticeDotNetCore.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
+builder.Services.AddScoped<ITestService, TestService>();
 
 var app = builder.Build();
 
