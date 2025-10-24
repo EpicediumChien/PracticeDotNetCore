@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PracticeDotNetCore.Services;
+using Microsoft.Extensions.Caching.Distributed; // Important!
+using System.Text.Json; // Important!
 
 namespace PracticeDotNetCore.Controllers
 {
